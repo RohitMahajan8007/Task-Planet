@@ -28,7 +28,7 @@ const PostCard = ({ post }) => {
     setCommentText('');
   };
 
-  const imageUrl = post.image ? `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${post.image}` : null;
+  const imageUrl = post.image ? `${import.meta.env.VITE_API_URL || ''}${post.image}` : null;
 
   return (
     <Card sx={{

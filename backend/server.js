@@ -25,7 +25,7 @@ app.use('/api/posts', require('./src/routes/postRoutes'));
 
 
 app.use((req, res, next) => {
-  if (req.method === 'GET' && req.headers.accept && req.headers.accept.includes('text/html')) {
+  if (!req.originalUrl.startsWith('/api') && !req.originalUrl.startsWith('/uploads')) {
     res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
   } else {
     next();

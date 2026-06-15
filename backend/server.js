@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/auth', require('./src/routes/authRoutes'));
 app.use('/api/posts', require('./src/routes/postRoutes'));
@@ -26,7 +26,7 @@ app.use('/api/posts', require('./src/routes/postRoutes'));
 
 app.use((req, res, next) => {
   if (!req.originalUrl.startsWith('/api') && !req.originalUrl.startsWith('/uploads')) {
-    res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
   } else {
     next();
   }
